@@ -1,5 +1,5 @@
 DESCRIPTION
-The Program convert one csv to another
+Program converts one csv to another
 
 REQUIREMENTS
 
