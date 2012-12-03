@@ -12,7 +12,7 @@ GET STARTED
 In order to run, take the following steps:
 
 1)git clone git://github.com/fiti128/contacts.git (you can also download zip file 
-from https://github.com/fiti128/time)
+from https://github.com/fiti128/contacts)
 2)cd contacts
 3)mvn assembly:single
 4)cd target
