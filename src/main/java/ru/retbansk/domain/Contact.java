@@ -24,11 +24,17 @@ import ru.retbansk.DefaultParams;
 /**
  * Main domain class. Everything about contact is here.
  * It is a form of the Builder pattern[Gamma95,p.97]. 
- * Instead of making the desired object directly, the client calls
- * a constructor with required parameter (primaryEmail) and gets a 
- * builder object. Then you can call setter-like methods on the buider 
- * object to set each optional parameter of interest.
- * 
+ * Instead of making the desired object directly, we call
+ * a constructor with required parameter (primaryEmail) and get a 
+ * builder object. Then you can call setter-like methods on the builder 
+ * object to set each optional parameter of interest. Finally,
+ * we call a parameterless <code>build</code> method to generate
+ * the object, with is immutable.
+ * <pre>
+ * Example of creating
+ * Contact contact = new Contact.Builder("sy@gmail.com")
+						.firstName("Siarhei").lastName("Yanusheuski").build();          
+ * </pre>
  * <p><code>Builder.firstName</code>
  * Returns builder with new first name. If parameter is blank and 
  * primary email suits for generating new first name method generates
@@ -76,9 +82,10 @@ public class Contact implements Comparable<Contact> {
 	public static String FULLNAME_REGEX = "[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+){1}@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})";
 	public static String JUST_FAMILYNAME = "[_A-Za-z0-9-]+@";
 	public static String SEPARATOR = DefaultParams.DEFAULT_CSV_SEPARATOR;
-	private String firstName;
-	private String lastName;
-	private String nickName;
+	private final String firstName;
+	private final String lastName;
+	private final String nickName;
+	private final String displayName;
 	private final String primaryEmail;
 	
 	private Contact(Builder builder) {
@@ -86,11 +93,13 @@ public class Contact implements Comparable<Contact> {
 		this.firstName = builder.firstName;
 		this.lastName = builder.lastName;
 		this.nickName = builder.nickName;
+		this.displayName = builder.displayName;
 	}
 	public static class Builder {
 		private String firstName = "";
 		private String lastName = "";
 		private String nickName = "";
+		private String displayName;
 		private final String primaryEmail;
 		
 		public Builder(String primaryEmail) {
@@ -182,6 +191,7 @@ public class Contact implements Comparable<Contact> {
 	    } 
 		
 		public Contact build() {
+			this.displayName = (this.firstName + " " + this.lastName).trim();
 			return new Contact(this);
 		}
 	}
@@ -224,26 +234,14 @@ public class Contact implements Comparable<Contact> {
 		return firstName;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
 	public String getLastName() {
 		return lastName;
 	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
 
 	public String getNickName() {
 		return nickName;
 	}
 
-	public void setNickName(String nickName) {
-		this.nickName = nickName;
-	}
 
 	public String getPrimaryEmail() {
 		return primaryEmail;
@@ -253,11 +251,10 @@ public class Contact implements Comparable<Contact> {
 	}
 
 
-
 	@Override
 	public String toString() {
-		String displayName = firstName + " " + lastName;
-		return firstName + SEPARATOR + displayName.trim()+ SEPARATOR +lastName +SEPARATOR + nickName
+		
+		return firstName + SEPARATOR + displayName + SEPARATOR +lastName +SEPARATOR + nickName
 				+ SEPARATOR + primaryEmail;
 	}
 

@@ -39,7 +39,9 @@ import ru.retbansk.domain.Contact;
 
 /**
  * This class is a great worker. He works so badly that i think to raise his salary.
- *  
+ * In addition to the task it adds the feature of checking first name and last name 
+ * fields in input list. If its not blank, contact will not generate new. Instead 
+ * it takes from field. 
  * 
  * <p><code>contactsToString</code>
  * Converts Set of Contacts into String with default line separator.
@@ -47,7 +49,9 @@ import ru.retbansk.domain.Contact;
  * 
  * <p><code>getContactsFromListOfStringArrays</code>
  * Return a Set of Contacts.
- * Converting a List of Arrays of Strings from CSV file into the Set of Contacts.
+ * In addition to the task i add the feature of checking first name and last name 
+ * fields in input list. If its not blank, contact will not generate new. Instead 
+ * it takes from field.
  * 
  * <p><code>convert</code>
  * Asks user for path to input and output file.
@@ -135,6 +139,9 @@ public class Converter implements DefaultParams {
 	/**
 	 * Return a Set of Contacts.
 	 * Converting a List of Arrays of Strings from CSV file into the Set of Contacts.
+	 * In addition to the task i add the feature of checking first name and last name 
+	 * fields in input list. If its not blank, contact will not generate new. Instead 
+	 * it takes from field. 
 	 * 
 	 * @param list List of Arrays of Strings from CSV file
 	 * @return Set of Contacts
@@ -170,7 +177,7 @@ public class Converter implements DefaultParams {
 				}
 		} catch (Exception e) {
 			logger.error("Not a valid csv");
-			e.printStackTrace();
+			
 		}
 				
 		return contacts;

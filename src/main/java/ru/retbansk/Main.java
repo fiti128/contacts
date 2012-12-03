@@ -24,6 +24,7 @@ import ru.retbansk.service.Converter;
  * @author Siarhei Yanusheuski
  * @since 02.12.2012
  * @see ru.retbansk.service.Converter
+ * 
  */
 public class Main implements DefaultParams {
 	public static void main(String[] args) throws Exception {

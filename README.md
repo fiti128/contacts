@@ -1,4 +1,5 @@
 DESCRIPTION
+
 Program converts one csv to another
 
 REQUIREMENTS
@@ -9,6 +10,7 @@ REQUIREMENTS
 GET STARTED
 
 In order to run, take the following steps:
+
 1)git clone git://github.com/fiti128/contacts.git (you can also download zip file 
 from https://github.com/fiti128/time)
 2)cd contacts

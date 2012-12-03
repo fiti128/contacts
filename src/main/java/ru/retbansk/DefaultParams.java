@@ -21,7 +21,7 @@ public interface DefaultParams {
 	public static String DEFAULT_CSV_SEPARATOR = ",";
 	public static String DEFAULT_ENCODING = "UTF-8";
 	public static String INPUT_FILE = "inputContacts.csv";
-	public static String OUTPUT_FILE = "heho/output.csv";
+	public static String OUTPUT_FILE = "output/output.csv";
 	public static String HEADER_EMAIL = "E-mail Address";
 	public static String HEADER_FIRST_NAME = "First Name";
 	public static String HEADER_LAST_NAME = "Last Name";
